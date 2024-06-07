@@ -9,7 +9,13 @@ TypescriptEnumGenerator is a package that utilizes the dotnet ISourceGenerator t
 
 ## Install
 
-tbc.
+```
+dotnet add package TypescriptEnumGenerator --version 0.1.0
+```
+
+```
+Install-Package TypescriptEnumGenerator -Version 0.1.0
+```
 
 ## Example
 Given the following input code 
