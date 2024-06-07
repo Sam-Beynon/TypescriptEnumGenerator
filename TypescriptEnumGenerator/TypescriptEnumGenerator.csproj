@@ -10,7 +10,7 @@
         <IsRoslynComponent>true</IsRoslynComponent>
         <PackageId>TypescriptEnumGenerator</PackageId>
         <PackageId>TypescriptEnumGenerator</PackageId>
-        <Version>1.0.0</Version>
+        <Version>0.1</Version>
         <Authors>Sam Beynon</Authors>
         <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
