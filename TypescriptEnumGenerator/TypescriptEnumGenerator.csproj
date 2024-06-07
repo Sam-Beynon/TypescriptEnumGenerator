@@ -14,6 +14,8 @@
         <Authors>Sam Beynon</Authors>
         <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageReadmeFile>Readme.md</PackageReadmeFile>
+        <PackageProjectUrl>https://github.com/Sam-Beynon/TypescriptEnumGenerator</PackageProjectUrl>
     </PropertyGroup>
 
     <ItemGroup>
@@ -23,6 +25,7 @@
         </PackageReference>
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.3.0"/>
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.3.0"/>
+        <None Include="Readme.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 
 
