@@ -6,13 +6,20 @@ TypescriptEnumGenerator is a package that utilizes the dotnet ISourceGenerator t
 
 - Helps maintain uniformity between C# and TypeScript enum definitions.
 - Provides a clean mechanism for utilizing enums for front end dropdowns, while providing compatibility for most component libraries.
+- Integrates into the `[Display]` attribute and respects usage of `[Display(Name="")`
 
 ## Install
 
-tbc.
+```
+dotnet add package TypescriptEnumGenerator --version 0.1.0
+```
+
+```
+Install-Package TypescriptEnumGenerator -Version 0.1.0
+```
 
 ## Example
-Given the following input code 
+Given the following input code
 
 ```csharp
 [TypescriptEnum] //Decorate your enum with this little badger 
