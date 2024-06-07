@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypescriptEnumGenerator", "SourceGenerators1\TypescriptEnumGenerator\TypescriptEnumGenerator.csproj", "{083F6F82-26A7-4C04-965C-E4C03D270EFE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypescriptEnumGenerator", "TypescriptEnumGenerator\TypescriptEnumGenerator.csproj", "{083F6F82-26A7-4C04-965C-E4C03D270EFE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypescriptEnumGenerator.Sample", "TypescriptEnumGenerator.Sample\TypescriptEnumGenerator.Sample.csproj", "{E7828FAF-9993-43D6-8FC9-7EB8F27D2C19}"
 EndProject

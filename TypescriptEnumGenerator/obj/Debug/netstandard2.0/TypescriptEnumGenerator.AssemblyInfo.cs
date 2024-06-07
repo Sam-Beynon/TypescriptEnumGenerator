@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TypescriptEnumGenerator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+11742ef8ba7ee0fb403ed5ad5c0a38b9723cba8a")]
 [assembly: System.Reflection.AssemblyProductAttribute("TypescriptEnumGenerator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TypescriptEnumGenerator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
