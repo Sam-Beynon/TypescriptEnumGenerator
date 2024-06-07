@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Microsoft.CodeAnalysis;
@@ -99,9 +100,10 @@ public class TypescriptEnumSourceGenerator : ISourceGenerator
         stringBuilder.AppendLine(@"    const dropDownOptions = new Array<DropDownOption>();");
         foreach (var member in enumSymbol.GetMembers())
         {
+            var displayNameValue = GetDisplayNameArgumentString(member);
             if (member.Kind == SymbolKind.Field && member is IFieldSymbol fieldSymbol && fieldSymbol.HasConstantValue)
             {
-                stringBuilder.AppendLine($@"    dropDownOptions.push(new DropDownOption({fieldSymbol.ConstantValue}, '{fieldSymbol.Name}'));");
+                stringBuilder.AppendLine($@"    dropDownOptions.push(new DropDownOption({fieldSymbol.ConstantValue}, ""{displayNameValue ?? fieldSymbol.Name}""));");
             }
         }
 
@@ -119,9 +121,14 @@ export function get{typeName}FromString(value: string): {typeName} {{
 
         foreach (var member in enumSymbol.GetMembers())
         {
+            var displayNameValue = GetDisplayNameArgumentString(member);
             if (member.Kind == SymbolKind.Field && member is IFieldSymbol fieldSymbol && fieldSymbol.HasConstantValue)
             {
                 stringBuilder.AppendLine($"        case \"{fieldSymbol.Name.ToLower()}\": return {typeName}.{fieldSymbol.Name};");
+                if (displayNameValue != null)
+                {
+                    stringBuilder.AppendLine($"        case \"{displayNameValue?.ToLower()}\": return {typeName}.{fieldSymbol.Name};");
+                }
             }
         }
 
@@ -130,6 +137,19 @@ export function get{typeName}FromString(value: string): {typeName} {{
     }}
 }}
 ");
+    }
+
+    private static string? GetDisplayNameArgumentString(ISymbol member)
+    {
+        var displayAttribute = 
+            member
+                .GetAttributes()
+                .FirstOrDefault(a => a.AttributeClass?.Name == "DisplayAttribute");
+        var displayNameArgument = 
+            displayAttribute?
+                .NamedArguments
+                .FirstOrDefault(a => a.Key == "Name");
+        return displayNameArgument?.Value.Value?.ToString();
     }
 
     private static void GenerateIntToEnumMethod(INamedTypeSymbol enumSymbol, string typeName, StringBuilder stringBuilder)
