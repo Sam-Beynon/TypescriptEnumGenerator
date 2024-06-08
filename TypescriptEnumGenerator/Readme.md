@@ -11,11 +11,11 @@ TypescriptEnumGenerator is a package that utilizes the dotnet ISourceGenerator t
 ## Install
 
 ```
-dotnet add package TypescriptEnumGenerator --version 0.1.0
+dotnet add package TypescriptEnumGenerator --version 0.2.0
 ```
 
 ```
-Install-Package TypescriptEnumGenerator -Version 0.1.0
+Install-Package TypescriptEnumGenerator -Version 0.2.0
 ```
 
 ## Example
@@ -27,7 +27,9 @@ public enum TestEnum
 {
     Active,
     Closed,
-    SomethingElse,
+    [Display(Name = "Something else")]
+    SomethingElse = 13,
+    [Display(Name = "Hello it's magic")]
     HelloItsMagic
 }
 ```
@@ -37,10 +39,10 @@ And the system will generate the following typescript file
 ```ts
 import DropDownOption from './DropDownOption'
 export enum TestEnum {
-Active = 0,
-Closed = 1,
-SomethingElse = 2,
-HelloItsMagic = 3,
+    Active = 0,
+    Closed = 1,
+    SomethingElse = 13,
+    HelloItsMagic = 14,
 }
 
 export function getTestEnumFromInt(value: number): TestEnum {
@@ -48,8 +50,8 @@ export function getTestEnumFromInt(value: number): TestEnum {
 
         case 0: return TestEnum.Active;
         case 1: return TestEnum.Closed;
-        case 2: return TestEnum.SomethingElse;
-        case 3: return TestEnum.HelloItsMagic;
+        case 13: return TestEnum.SomethingElse;
+        case 14: return TestEnum.HelloItsMagic;
 
         default: throw new Error(`Unknown TestEnum value: ${value}`);
     }
@@ -62,18 +64,20 @@ export function getTestEnumFromString(value: string): TestEnum {
         case "active": return TestEnum.Active;
         case "closed": return TestEnum.Closed;
         case "somethingelse": return TestEnum.SomethingElse;
+        case "something else": return TestEnum.SomethingElse;
         case "helloitsmagic": return TestEnum.HelloItsMagic;
+        case "hello it's magic": return TestEnum.HelloItsMagic;
 
         default: throw new Error(`Unknown TestEnum value: ${value}`);
     }
 }
 
-export function getTestEnumDropDownOptions(): DropDownOption[] { 
+export function getTestEnumDropDownOptions(): DropDownOption[] {
     const dropDownOptions = new Array<DropDownOption>();
-    dropDownOptions.push(new DropDownOption(0, 'Active'));
-    dropDownOptions.push(new DropDownOption(1, 'Closed'));
-    dropDownOptions.push(new DropDownOption(2, 'SomethingElse'));
-    dropDownOptions.push(new DropDownOption(3, 'HelloItsMagic'));
+    dropDownOptions.push(new DropDownOption(0, "Active"));
+    dropDownOptions.push(new DropDownOption(1, "Closed"));
+    dropDownOptions.push(new DropDownOption(13, "Something else"));
+    dropDownOptions.push(new DropDownOption(14, "Hello it's magic"));
     return dropDownOptions;
 }
 
