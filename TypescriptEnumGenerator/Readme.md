@@ -11,11 +11,11 @@ TypescriptEnumGenerator is a package that utilizes the dotnet ISourceGenerator t
 ## Install
 
 ```
-dotnet add package TypescriptEnumGenerator --version 0.2.0
+dotnet add package TypescriptEnumGenerator --version 0.2.1
 ```
 
 ```
-Install-Package TypescriptEnumGenerator -Version 0.2.0
+Install-Package TypescriptEnumGenerator -Version 0.2.1
 ```
 
 ## Example
@@ -72,18 +72,16 @@ export function getTestEnumFromString(value: string): TestEnum {
     }
 }
 
-export function getTestEnumDropDownOptions(): DropDownOption[] {
-    const dropDownOptions = new Array<DropDownOption>();
-    dropDownOptions.push(new DropDownOption(0, "Active"));
-    dropDownOptions.push(new DropDownOption(1, "Closed"));
-    dropDownOptions.push(new DropDownOption(13, "Something else"));
-    dropDownOptions.push(new DropDownOption(14, "Hello it's magic"));
-    return dropDownOptions;
-}
+export const TestEnumDropDownOptions: DropDownOption[] = [
+    new DropDownOption(0, "Active"),
+    new DropDownOption(1, "Closed"),
+    new DropDownOption(13, "Something else"),
+    new DropDownOption(14, "Hello it's magic"),
+];
 
 ```
 
-The generator will also generate a single `DropDownOption.ts` file that is utilized for the `GetEnumDropDownOptions` method, this is designed to be used with `Select` and `DropDown` components provided by most component libraries and the vanilla HTML specification.
+The generator will also generate a single `DropDownOption.ts` file that is utilized for the `DropDownOption` class, this is designed to be used with `Select` and `DropDown` components provided by most component libraries and the vanilla HTML specification.
 
 ```ts
 export default class DropdownOption {
