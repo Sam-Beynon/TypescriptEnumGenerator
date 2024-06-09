@@ -1,9 +1,9 @@
 import DropDownOption from './DropDownOption'
 export enum TestEnum {
-Active = 0,
-Closed = 1,
-SomethingElse = 13,
-HelloItsMagic = 14,
+    Active = 0,
+    Closed = 1,
+    SomethingElse = 13,
+    HelloItsMagic = 14,
 }
 
 export function getTestEnumFromInt(value: number): TestEnum {
@@ -33,11 +33,9 @@ export function getTestEnumFromString(value: string): TestEnum {
     }
 }
 
-export function getTestEnumDropDownOptions(): DropDownOption[] { 
-    const dropDownOptions = new Array<DropDownOption>();
-    dropDownOptions.push(new DropDownOption(0, "Active"));
-    dropDownOptions.push(new DropDownOption(1, "Closed"));
-    dropDownOptions.push(new DropDownOption(13, "Something else"));
-    dropDownOptions.push(new DropDownOption(14, "Hello it's magic"));
-    return dropDownOptions;
-}
+export const TestEnumDropDownOptions: DropDownOption[] = [ 
+    new DropDownOption(0, "Active"),
+    new DropDownOption(1, "Closed"),
+    new DropDownOption(13, "Something else"),
+    new DropDownOption(14, "Hello it's magic"),
+];

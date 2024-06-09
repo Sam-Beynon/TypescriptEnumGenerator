@@ -96,19 +96,17 @@ public class TypescriptEnumSourceGenerator : ISourceGenerator
     private static void GenerateGetDropDownOptionsMethod(INamedTypeSymbol enumSymbol, string typeName,
         StringBuilder stringBuilder)
     {
-        stringBuilder.AppendLine($"export function get{typeName}DropDownOptions(): DropDownOption[] {{ ");
-        stringBuilder.AppendLine(@"    const dropDownOptions = new Array<DropDownOption>();");
+        stringBuilder.AppendLine($"export const {typeName}DropDownOptions: DropDownOption[] = [ ");
         foreach (var member in enumSymbol.GetMembers())
         {
             var displayNameValue = GetDisplayNameArgumentString(member);
             if (member.Kind == SymbolKind.Field && member is IFieldSymbol fieldSymbol && fieldSymbol.HasConstantValue)
             {
-                stringBuilder.AppendLine($@"    dropDownOptions.push(new DropDownOption({fieldSymbol.ConstantValue}, ""{displayNameValue ?? fieldSymbol.Name}""));");
+                stringBuilder.AppendLine($@"    new DropDownOption({fieldSymbol.ConstantValue}, ""{displayNameValue ?? fieldSymbol.Name}""),");
             }
         }
 
-        stringBuilder.AppendLine("    return dropDownOptions;");
-        stringBuilder.AppendLine("}");
+        stringBuilder.AppendLine("];");
     }
 
     private static void GenerateStringToEnumMethod(INamedTypeSymbol enumSymbol, string typeName,
@@ -180,7 +178,7 @@ export function get{typeName}FromInt(value: number): {typeName} {{
         {
             if (member.Kind == SymbolKind.Field && member is IFieldSymbol fieldSymbol && fieldSymbol.HasConstantValue)
             {
-                stringBuilder.AppendLine($"{fieldSymbol.Name} = {fieldSymbol.ConstantValue},");
+                stringBuilder.AppendLine($"    {fieldSymbol.Name} = {fieldSymbol.ConstantValue},");
             }
         }
 

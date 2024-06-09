@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SourceGenerators1\TypescriptEnumGenerator\TypescriptEnumGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
+      <ProjectReference Include="..\TypescriptEnumGenerator\TypescriptEnumGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
     </ItemGroup>
 
 </Project>
